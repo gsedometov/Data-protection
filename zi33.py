@@ -2,7 +2,8 @@ from argparse import ArgumentParser
 from itertools import chain
 
 def encrypt_(msg, key):
-    return ''.join(chain(*[msg[n::key] for n in range(key)]))
+    route = chain(*[msg[n::key] for n in range(key)])
+    return ''.join(route)
 
 encrypt = lambda args: encrypt_(args.m, args.k)
 
