@@ -1,3 +1,4 @@
+from itertools import islice
 import re
 
 ENCODING = 'cp866'
@@ -15,6 +16,12 @@ def add_modulo_256(a, b):
 def sub_modulo_256(a, b):
     return (a - b) % 256
 
-
 def ifind(pattern, string):
     return (x.group(0) for x in re.finditer(pattern, string))
+
+def partitions(iterable, l):
+    i = iter(iterable)
+    slc = list(islice(i, l))
+    while slc:
+        yield slc
+        slc = list(islice(i, l))
